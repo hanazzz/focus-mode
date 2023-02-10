@@ -1,9 +1,18 @@
+// Define badge background colors (OFF = grey, ON = green)
+const bgOFF = '#272727';
+const bgON = '#096F00';
+
+// Set up badge
 chrome.runtime.onInstalled.addListener(() => {
   chrome.action.setBadgeText({
     text: "OFF",
   });
+  chrome.action.setBadgeBackgroundColor({
+    color: bgOFF,
+  })
 });
 
+// Define pages on which extension can run
 const extensions = 'https://developer.chrome.com/docs/extensions'
 const webstore = 'https://developer.chrome.com/docs/webstore'
 const mdnDocs = 'https://developer.mozilla.org/en-US/docs'
@@ -18,11 +27,20 @@ chrome.action.onClicked.addListener(async (tab) => {
     // Next state will always be the opposite
     const nextState = prevState === 'ON' ? 'OFF' : 'ON'
 
+    // Define badge background color dependent on next state
+    const bgColor = nextState === 'ON' ? bgON : bgOFF;
+
+
     // Set the action badge to the next state
     await chrome.action.setBadgeText({
       tabId: tab.id,
       text: nextState,
     });
+
+    // Set the action badge color
+    await chrome.action.setBadgeBackgroundColor({
+      color: bgColor,
+    })
 
     // Initialize stylesheet var
     let stylesheet = undefined;
