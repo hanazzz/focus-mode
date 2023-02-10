@@ -14,3 +14,8 @@ main > :last-child {
 #root :is(aside, footer, .main-document-header-container) {
   display: none;
 }
+
+main {
+  margin-top: min(10vmax, 10rem);
+  margin-bottom: min(10vmax, 10rem);
+}
