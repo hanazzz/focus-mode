@@ -39,6 +39,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 
     // Set the action badge color
     await chrome.action.setBadgeBackgroundColor({
+      tabId: tab.id,
       color: bgColor,
     })
 
