@@ -10,8 +10,8 @@ main > :last-child {
   margin-bottom: min(10vmax, 10rem);
 } */
 
-/* Hide page asides, footer, and header */
-#root :is(aside, footer, .main-document-header-container) {
+/* Hide page footer, header div, and left sidebar */
+#root :is(footer, .main-document-header-container, #sidebar-quicklinks) {
   display: none;
 }
 
